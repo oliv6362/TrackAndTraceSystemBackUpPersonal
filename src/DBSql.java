@@ -14,13 +14,12 @@ public class DBSql {
 
     private Connection connection;
     private Statement stmt;
-    private Statement stmt1;
 
     DBSql() {
         connection = null;
         stmt = null;
         try {
-            String url = "jdbc:sqlite:C://Users/aikke/IdeaProjects/TrackAndTrace/TrackAndTraceDB.db";
+            String url = "jdbc:sqlite:C://Users/wzs84/IdeaProjects/TrackAndTraceSystem/TrackAndTraceDB.db";
             connection = DriverManager.getConnection(url);
 
         } catch (SQLException throwables) {
@@ -107,23 +106,6 @@ public class DBSql {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public String userRole(String username) {
-        String result = "";
-        try {
-            PreparedStatement userRole = connection.
-                    prepareStatement("SELECT FROM user WHERE username = '" + username + "'");
-            ResultSet rs = userRole.executeQuery();
-
-            while (rs.next()){
-                result = rs.getString("userRole");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
     }
 
     public String sogLokation(int pakkeNr) {
